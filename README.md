@@ -1,4 +1,4 @@
-# Desafio Creando un entorno virtual para nuestro proyecto Django Alfredo ramirez
+# Desafio Creando un entorno virtual para nuestro proyecto Django
 Creando un entorno virtual para nuestro proyecto Django.
 
 1) La carpeta pip-list-env incluye todas las capturas de los entornos virtuales.
