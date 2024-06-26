@@ -1,0 +1,44 @@
+Crear los entornos virtuales
+python -m venv ferreteria
+python -m venv laesquina
+python -m venv onlyflans
+python -m venv prestobar
+python -m venv taller
+
+# Instalar dependencias en cada entorno virtual
+declare -a environments=("ferreteria" "laesquina" "onlyflans" "prestobar" "taller")
+declare -a django_versions=("3.2.4" "<3.0" "3.2" "" "")
+declare -a additional_packages=("django==3.2.4" "django<3.0" "django==3.2" "astral" "pytz==2019.3")
+
+for i in "${!environments[@]}"; do
+    source "${environments[$i]}/Scripts/activate"
+    pip install ${additional_packages[$i]}
+    pip freeze > requirement-${environments[$i]}.txt
+    deactivate
+done
+
+# Crear y respaldar el entorno virtual "calendariolunar"
+
+python -m venv calendariolunar
+source calendariolunar/Scripts/activate
+pip install -r requirements.txt
+echo "asgiref==3.4.1" >> requirements-calendariolunar.txt
+echo "astral==2.2" >> requirements-calendariolunar.txt
+echo "certifi==2021.5.30" >> requirements-calendariolunar.txt
+echo "chardet==4.0.0" >> requirements-calendariolunar.txt
+echo "charset-normalizer==2.0.5" >> requirements-calendariolunar.txt
+echo "Django==3.2.7" >> requirements-calendariolunar.txt
+echo "django-debug-toolbar==3.2.2" >> requirements-calendariolunar.txt
+echo "django-mathfilters==0.4.0" >> requirements-calendariolunar.txt
+echo "djangorestframework==3.12.4" >> requirements-calendariolunar.txt
+echo "gunicorn==20.1.0" >> requirements-calendariolunar.txt
+echo "idna==2.7" >> requirements-calendariolunar.txt
+echo "python-dateutil==2.8.0" >> requirements-calendariolunar.txt
+echo "pytz==2018.4" >> requirements-calendariolunar.txt
+echo "requests==2.26.0" >> requirements-calendariolunar.txt
+echo "six==1.12.0" >> requirements-calendariolunar.txt
+echo "sqlparse==0.2.4" >> requirements-calendariolunar.txt
+echo "urllib3==1.24.2" >> requirements-calendariolunar.txt
+echo "whitenoise==5.3.0" >> requirements-calendariolunar.txt
+pip freeze >> requirements-calendariolunar.txt
+deactivate
